@@ -15,5 +15,6 @@ public class Git01 {
         System.out.println("hello,git2!");
         System.out.println("hello,git3!");
         System.out.println("hot-fix1");
+        System.out.println("push test");
     }
 }
