@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="druid.properties"></properties>
+
+
+    <!--    设置mybatis全部配置-->
+    <settings>
+        <!--        将_自动映射为驼峰-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--        开启延迟加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+
+    </settings>
+
+
+    <!--    设置类型别名,,必须放在properties后面-->
+    <typeAliases>
+        <!--        <typeAlias type="com.edu.mybatis.javabean.User" alias="user"></typeAlias>-->
+        <!--        相当于-->
+        <!--        <typeAlias type="com.edu.mybatis.javabean.User"></typeAlias>-->
+        <package name="com.edu.mybatis.pojo"/>
+        <!--        以包为单位全部设置默认的别名，，不区分大小写-->
+    </typeAliases>
+
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!--           手动管理 JDBC|MANAGER事务管理方式/被管理-->
+            <dataSource type="POOLED">
+                <!--                POOLED|UNPOOLED|JNDI数据源-->
+
+                <property name="driver" value="${prop.driver}"></property>
+                <property name="url" value="${prop.url}"></property>
+                <property name="username" value="${prop.username}"></property>
+                <property name="password" value="${prop.password}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--    引入映射配置文件-->
+    <mappers>
+        <!--        <mapper resource="mappers/UserMapper.xml"/>-->
+        <package name="com.edu.mybatis.mapper"/>
+        <!--        以包为单位引入配置文件
+                    1.mapper接口所在的包要和映射文件所在的包一致；
+                    2.mapper接口的名字要和映射文件的名字一致-->
+
+    </mappers>
+</configuration>
